@@ -304,7 +304,7 @@ Widget build(BuildContext context) {
 ---
 
 ```dart
-import 'package:pod_player/pod_player.dart';
+import 'package:flutter_video_player/pod_player.dart';
 import 'package:flutter/material.dart';
 
 class PlayVideoFromYoutube extends StatefulWidget {
