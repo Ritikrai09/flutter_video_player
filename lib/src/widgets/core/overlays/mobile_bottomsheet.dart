@@ -232,6 +232,7 @@ class _MobileOverlayBottomControlles extends StatelessWidget {
               if(podCtr.podPlayerConfig.playerIcon != null)
               podCtr.podPlayerConfig.playerIcon ?? const SizedBox(),
               const Spacer(),
+              if(podCtr.podPlayerConfig.showMute == true)
                 GetBuilder<PodGetXVideoController>(
                 tag: tag,
                 id: 'volume',

@@ -7,6 +7,7 @@ class PodPlayerConfig {
   final bool wakelockEnabled;
   final bool showDuration;
   final bool showFullScreen;
+  final bool showMute;
   final Widget? playerIcon;
 
   /// Initial video quality priority. The first available option will be used,
@@ -24,6 +25,7 @@ class PodPlayerConfig {
     this.isLooping = false,
     this.forcedVideoFocus = false,
     this.wakelockEnabled = true,
+    this.showMute=false,
     this.videoQualityPriority = const [1080, 720, 360],
   });
 
@@ -34,6 +36,7 @@ class PodPlayerConfig {
     bool? wakelockEnabled,
     bool? showDuration,
     bool? showFullScreen,
+    bool? showMute,
     List<int>? videoQualityPriority,
   }) {
     return PodPlayerConfig(
@@ -41,6 +44,7 @@ class PodPlayerConfig {
       isLooping: isLooping ?? this.isLooping,
       forcedVideoFocus: forcedVideoFocus ?? this.forcedVideoFocus,
       wakelockEnabled: wakelockEnabled ?? this.wakelockEnabled,
+      showMute: showMute ?? false,
       videoQualityPriority: videoQualityPriority ?? this.videoQualityPriority,
     );
   }
