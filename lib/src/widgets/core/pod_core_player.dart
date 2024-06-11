@@ -72,7 +72,7 @@ class _PodCoreVideoPlayer extends StatelessWidget {
                   },
                 ),
               ),
-              _VideoOverlays(tag: tag,showDuration: podCtr.podPlayerConfig.showDuration,showFullScreen: podCtr.podPlayerConfig.showFullScreen,),
+              _VideoOverlays(tag: tag),
               IgnorePointer(
                 child: GetBuilder<PodGetXVideoController>(
                   tag: tag,

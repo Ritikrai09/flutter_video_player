@@ -69,13 +69,9 @@ class _WebOverlay extends StatelessWidget {
 
 class _WebOverlayBottomControlles extends StatelessWidget {
   final String tag;
-  final bool showFullScreen;
-  final bool showDuration;
 
   const _WebOverlayBottomControlles({
     required this.tag,
-    this.showFullScreen=true,
-    this.showDuration=true
   });
 
   @override
@@ -124,7 +120,6 @@ class _WebOverlayBottomControlles extends StatelessWidget {
                             ),
                           ),
                         ),
-                        if(showDuration == true)
                         GetBuilder<PodGetXVideoController>(
                           tag: tag,
                           id: 'video-progress',
@@ -156,7 +151,6 @@ class _WebOverlayBottomControlles extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 20),
-                 if(showFullScreen == true)
                 Expanded(
                   child: FittedBox(
                     fit: BoxFit.scaleDown,
@@ -206,10 +200,10 @@ class _WebOverlayBottomControlles extends StatelessWidget {
       } else {
         if (kIsWeb) {
           uni_html.document.documentElement?.requestFullscreen();
-          podCtr.enableFullScreen(tag,showDuration,showFullScreen);
+          podCtr.enableFullScreen(tag);
           return;
         } else {
-          podCtr.enableFullScreen(tag,showDuration,showFullScreen);
+          podCtr.enableFullScreen(tag);
         }
       }
     } else {

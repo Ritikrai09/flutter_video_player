@@ -18,15 +18,12 @@ class PodPlayerController {
   Object? _initializationError;
 
   final PlayVideoFrom playVideoFrom;
-  final bool showFullScreen,showDuration;
   final PodPlayerConfig podPlayerConfig;
 
   /// controller for pod player
   PodPlayerController({
     required this.playVideoFrom,
     this.podPlayerConfig = const PodPlayerConfig(),
-    this.showFullScreen=true,
-    this.showDuration=true,
   }) {
     _init();
   }
@@ -232,7 +229,7 @@ class PodPlayerController {
   /// orientation by yourself.
   void enableFullScreen() {
     uni_html.document.documentElement?.requestFullscreen();
-    _ctr.enableFullScreen(getTag,showDuration,showFullScreen);
+    _ctr.enableFullScreen(getTag);
   }
 
   /// Disables fullscreen mode.

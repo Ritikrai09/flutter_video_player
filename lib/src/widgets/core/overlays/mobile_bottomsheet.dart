@@ -181,13 +181,9 @@ class _VideoPlaybackSelectorMob extends StatelessWidget {
 
 class _MobileOverlayBottomControlles extends StatelessWidget {
   final String tag;
-  final bool showDuration;
-  final bool showFullScreen;
 
   const _MobileOverlayBottomControlles({
     required this.tag,
-    this.showDuration=true,
-    this.showFullScreen=true,
   });
 
   @override
@@ -206,7 +202,7 @@ class _MobileOverlayBottomControlles extends StatelessWidget {
             child: Row(
               children: [
                 const SizedBox(width: 12),
-                if(podCtr.podPlayerConfig.showDuration == true)
+                // if(podCtr.podPlayerConfig.showDuration == true)
                 GetBuilder<PodGetXVideoController>(
                   tag: tag,
                   id: 'video-progress',
@@ -229,12 +225,12 @@ class _MobileOverlayBottomControlles extends StatelessWidget {
                     );
                   },
                 ),
-                if(podCtr.podPlayerConfig.showDuration == true)
+              //  if(podCtr.podPlayerConfig.showDuration == true)
                 const SizedBox(width : 12),
-                if(podCtr.podPlayerConfig.playerIcon != null)
-                podCtr.podPlayerConfig.playerIcon ?? const SizedBox(),
-                const Spacer(),
-                if(podCtr.podPlayerConfig.showMute == true)
+              //  if(podCtr.podPlayerConfig.playerIcon != null)
+               // podCtr.podPlayerConfig.playerIcon ?? const SizedBox(),
+               // const Spacer(),
+            //s    if(podCtr.podPlayerConfig.showMute == true)
                   GetBuilder<PodGetXVideoController>(
                   tag: tag,
                   id: 'volume',
@@ -253,7 +249,7 @@ class _MobileOverlayBottomControlles extends StatelessWidget {
                     ),
                   ),
                 ),
-                if(podCtr.podPlayerConfig.showFullScreen == true)
+               // if(podCtr.podPlayerConfig.showFullScreen == true)
                 MaterialIconButton(
                   toolTipMesg: podCtr.isFullScreen
                       ? podCtr.podPlayerLabels.exitFullScreen ??
@@ -266,7 +262,7 @@ class _MobileOverlayBottomControlles extends StatelessWidget {
                       if (podCtr.isFullScreen) {
                         podCtr.disableFullScreen(context, tag);
                       } else {
-                        podCtr.enableFullScreen(tag,showDuration,showFullScreen);
+                        podCtr.enableFullScreen(tag);
                       }
                     } else {
                       podCtr.toggleVideoOverlay();

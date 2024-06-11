@@ -2,15 +2,11 @@ part of 'package:pod_player_2/src/pod_player.dart';
 
 class _MobileOverlay extends StatelessWidget {
   final String tag;
-  final bool showFullScreen;
-  final bool showDuration;
   
 
 
   const _MobileOverlay({
     required this.tag,
-    this.showFullScreen=true,
-    this.showDuration=true,
   });
 
   @override
@@ -86,7 +82,7 @@ class _MobileOverlay extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.bottomLeft,
-          child: _MobileOverlayBottomControlles(tag: tag,showDuration: showDuration,showFullScreen: showFullScreen),
+          child: _MobileOverlayBottomControlles(tag: tag),
         ),
       ],
     );
