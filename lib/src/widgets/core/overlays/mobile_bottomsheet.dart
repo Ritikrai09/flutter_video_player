@@ -201,82 +201,85 @@ class _MobileOverlayBottomControlles extends StatelessWidget {
       builder: (podCtr) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            children: [
-              const SizedBox(width: 12),
-              if(podCtr.podPlayerConfig.showDuration == true)
-              GetBuilder<PodGetXVideoController>(
-                tag: tag,
-                id: 'video-progress',
-                builder: (podCtr) {
-                  return Row(
-                    children: [
-                      Text(
-                        podCtr.calculateVideoDuration(podCtr.videoPosition),
-                        style: const TextStyle(color: itemColor),
-                      ),
-                      const Text(
-                        ' / ',
-                        style: durationTextStyle,
-                      ),
-                      Text(
-                        podCtr.calculateVideoDuration(podCtr.videoDuration),
-                        style: durationTextStyle,
-                      ),
-                    ],
-                  );
-                },
-              ),
-              if(podCtr.podPlayerConfig.showDuration == true)
-              const SizedBox(width : 12),
-              if(podCtr.podPlayerConfig.playerIcon != null)
-              podCtr.podPlayerConfig.playerIcon ?? const SizedBox(),
-              const Spacer(),
-              if(podCtr.podPlayerConfig.showMute == true)
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: Row(
+              children: [
+                const SizedBox(width: 12),
+                if(podCtr.podPlayerConfig.showDuration == true)
                 GetBuilder<PodGetXVideoController>(
-                tag: tag,
-                id: 'volume',
-                builder: (podCtr) => MaterialIconButton(
-                  toolTipMesg: podCtr.isMute
-                      ? podCtr.podPlayerLabels.unmute ??
-                          'Unmute${kIsWeb ? ' (m)' : ''}'
-                      : podCtr.podPlayerLabels.mute ??
-                          'Mute${kIsWeb ? ' (m)' : ''}',
-                  color: itemColor,
-                  onPressed: podCtr.toggleMute,
-                  child: Icon(
-                    podCtr.isMute
-                        ? Icons.volume_off_rounded
-                        : Icons.volume_up_rounded,
+                  tag: tag,
+                  id: 'video-progress',
+                  builder: (podCtr) {
+                    return Row(
+                      children: [
+                        Text(
+                          podCtr.calculateVideoDuration(podCtr.videoPosition),
+                          style: const TextStyle(color: itemColor),
+                        ),
+                        const Text(
+                          ' / ',
+                          style: durationTextStyle,
+                        ),
+                        Text(
+                          podCtr.calculateVideoDuration(podCtr.videoDuration),
+                          style: durationTextStyle,
+                        ),
+                      ],
+                    );
+                  },
+                ),
+                if(podCtr.podPlayerConfig.showDuration == true)
+                const SizedBox(width : 12),
+                if(podCtr.podPlayerConfig.playerIcon != null)
+                podCtr.podPlayerConfig.playerIcon ?? const SizedBox(),
+                const Spacer(),
+                if(podCtr.podPlayerConfig.showMute == true)
+                  GetBuilder<PodGetXVideoController>(
+                  tag: tag,
+                  id: 'volume',
+                  builder: (podCtr) => MaterialIconButton(
+                    toolTipMesg: podCtr.isMute
+                        ? podCtr.podPlayerLabels.unmute ??
+                            'Unmute${kIsWeb ? ' (m)' : ''}'
+                        : podCtr.podPlayerLabels.mute ??
+                            'Mute${kIsWeb ? ' (m)' : ''}',
+                    color: itemColor,
+                    onPressed: podCtr.toggleMute,
+                    child: Icon(
+                      podCtr.isMute
+                          ? Icons.volume_off_rounded
+                          : Icons.volume_up_rounded,
+                    ),
                   ),
                 ),
-              ),
-              if(podCtr.podPlayerConfig.showFullScreen == true)
-              MaterialIconButton(
-                toolTipMesg: podCtr.isFullScreen
-                    ? podCtr.podPlayerLabels.exitFullScreen ??
-                        'Exit full screen${kIsWeb ? ' (f)' : ''}'
-                    : podCtr.podPlayerLabels.fullscreen ??
-                        'Fullscreen${kIsWeb ? ' (f)' : ''}',
-                color: itemColor,
-                onPressed: () {
-                  if (podCtr.isOverlayVisible) {
-                    if (podCtr.isFullScreen) {
-                      podCtr.disableFullScreen(context, tag);
+                if(podCtr.podPlayerConfig.showFullScreen == true)
+                MaterialIconButton(
+                  toolTipMesg: podCtr.isFullScreen
+                      ? podCtr.podPlayerLabels.exitFullScreen ??
+                          'Exit full screen${kIsWeb ? ' (f)' : ''}'
+                      : podCtr.podPlayerLabels.fullscreen ??
+                          'Fullscreen${kIsWeb ? ' (f)' : ''}',
+                  color: itemColor,
+                  onPressed: () {
+                    if (podCtr.isOverlayVisible) {
+                      if (podCtr.isFullScreen) {
+                        podCtr.disableFullScreen(context, tag);
+                      } else {
+                        podCtr.enableFullScreen(tag,showDuration,showFullScreen);
+                      }
                     } else {
-                      podCtr.enableFullScreen(tag,showDuration,showFullScreen);
+                      podCtr.toggleVideoOverlay();
                     }
-                  } else {
-                    podCtr.toggleVideoOverlay();
-                  }
-                },
-                child: Icon(
-                  podCtr.isFullScreen
-                      ? Icons.fullscreen_exit
-                      : Icons.fullscreen,
+                  },
+                  child: Icon(
+                    podCtr.isFullScreen
+                        ? Icons.fullscreen_exit
+                        : Icons.fullscreen,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           GetBuilder<PodGetXVideoController>(
             tag: tag,
