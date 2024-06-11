@@ -215,7 +215,7 @@ fluttercors --disable
 ---
 
 ```dart
-import 'package:pod_player/pod_player.dart';
+import 'package:pod_player_2/pod_player.dart';
 import 'package:flutter/material.dart';
 
 class PlayVideoFromNetwork extends StatefulWidget {
@@ -304,7 +304,7 @@ Widget build(BuildContext context) {
 ---
 
 ```dart
-import 'package:pod_player/pod_player.dart';
+import 'package:pod_player_2/pod_player.dart';
 import 'package:flutter/material.dart';
 
 class PlayVideoFromYoutube extends StatefulWidget {

@@ -1,4 +1,4 @@
-part of 'package:pod_player/src/pod_player.dart';
+part of 'package:pod_player_2/src/pod_player.dart';
 
 class FullScreenView extends StatefulWidget {
   final String tag;
